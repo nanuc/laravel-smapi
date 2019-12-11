@@ -2,7 +2,9 @@
 
 namespace Nanuc\Smapi\SmapiEndpoints\Skill;
 
-class VendorManagement
+use Nanuc\Smapi\SmapiEndpoints\SmapiEndpoint;
+
+class VendorManagement extends SmapiEndpoint
 {
     protected $endpoint = 'vendors';
 
@@ -11,6 +13,6 @@ class VendorManagement
      */
     public function getVendorList()
     {
-        //
+        return $this->get();
     }
 }

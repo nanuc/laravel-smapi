@@ -4,8 +4,6 @@ namespace Nanuc\Smapi\SmapiEndpoints\Skill;
 
 class Credentials extends Skill
 {
-    protected $endpoint = 'credentials';
-
     protected $useStage = false;
 
     /**

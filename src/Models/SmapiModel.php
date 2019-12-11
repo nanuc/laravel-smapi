@@ -20,7 +20,6 @@ abstract class SmapiModel
     {
         $class = $this->endpointNamespace . Str::studly($name);
         if(class_exists($class)) {
-            dump($class);
             return new $class($this);
         }
         else {

@@ -29,28 +29,32 @@ class SmapiEndpoint
         return $this->request('GET')->getStatusCode();
     }
 
-    protected function get($endpoint = '')
+    protected function get($endpoint = null)
     {
-        $this->endpoint = $endpoint;
-        return json_decode($this->request('get')->getBody());
+        return $this->runHttpMethod('get', $endpoint);
     }
 
-    protected function post($endpoint, $data = [])
+    protected function post($endpoint = null, $data = [])
     {
-        $this->endpoint = $endpoint;
-        return json_decode($this->request('post', $data)->getBody());
+        return $this->runHttpMethod('post', $endpoint, $data);
     }
 
-    protected function put($endpoint, $data = [])
+    protected function put($endpoint = null, $data = [])
     {
-        $this->endpoint = $endpoint;
-        return json_decode($this->request('put', $data)->getBody());
+        return $this->runHttpMethod('put', $endpoint, $data);
     }
 
-    protected function delete($endpoint)
+    protected function delete($endpoint = null)
     {
-        $this->endpoint = $endpoint;
-        return json_decode($this->request('delete')->getBody());
+        return $this->runHttpMethod('delete', $endpoint);
+    }
+
+    protected function runHttpMethod($method, $endpoint = null, $data = [])
+    {
+        if($endpoint) {
+            $this->endpoint = $endpoint;
+        }
+        return json_decode($this->request($method, $data)->getBody());
     }
 
     /**
@@ -84,7 +88,7 @@ class SmapiEndpoint
 
     private function buildUri()
     {
-        return $this->version.'/'.$this->getUri();
+        return $this->version.$this->getUri();
     }
 
     protected function getUri()
