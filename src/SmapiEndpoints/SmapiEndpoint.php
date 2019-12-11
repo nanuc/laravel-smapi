@@ -87,6 +87,11 @@ class SmapiEndpoint
         return $this->version.'/'.$this->getUri();
     }
 
+    protected function getUri()
+    {
+        return strlen($this->endpoint) ? '/' . $this->endpoint : '';
+    }
+
     /**
      * @return mixed
      * @throws SmapiException
