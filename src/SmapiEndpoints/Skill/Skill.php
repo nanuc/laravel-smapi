@@ -11,6 +11,8 @@ class Skill extends SmapiEndpoint
 
     protected $useStage = true;
 
+    protected $useSkillId = true;
+
     protected $endpoint;
 
     public function __construct(SkillModel $skill, $provisioningInfo = [])
@@ -21,8 +23,9 @@ class Skill extends SmapiEndpoint
 
     protected function getUri()
     {
-        return 'skills/' . $this->skill->getSkillId() .
-            ($this->useStage ? '/stages/' . $this->skill->getStage() : '') .
-            (strlen($this->endpoint) ? '/' . $this->endpoint : '');
+        return
+            ($this->useSkillId ? 'skills/' . $this->skill->getSkillId() . '/' : '') .
+            ($this->useStage ? 'stages/' . $this->skill->getStage() . '/' : '') .
+            (strlen($this->endpoint) ? $this->endpoint : '');
     }
 }

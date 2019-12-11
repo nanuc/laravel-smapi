@@ -2,7 +2,6 @@
 
 namespace Nanuc\Smapi\Models;
 
-use Illuminate\Support\Str;
 use Nanuc\Smapi\Exceptions\SmapiException;
 
 abstract class SmapiModel
@@ -14,17 +13,6 @@ abstract class SmapiModel
     public function __construct($provisioningInfo = null)
     {
         $this->provisioningInfo = $provisioningInfo;
-    }
-
-    public function __call($name, $arguments)
-    {
-        $class = $this->endpointNamespace . Str::studly($name);
-        if(class_exists($class)) {
-            return new $class($this);
-        }
-        else {
-            trigger_error('Call to undefined method '.__CLASS__.'::'.$name.'()', E_USER_ERROR);
-        }
     }
 
     /**

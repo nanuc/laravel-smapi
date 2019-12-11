@@ -2,11 +2,11 @@
 
 namespace Nanuc\Smapi\Models;
 
+use Nanuc\Smapi\SmapiEndpoints\ISP\Management;
+
 class Product extends SmapiModel
 {
     protected $productId;
-
-    protected $endpointNamespace = 'Nanuc\\Smapi\\SmapiEndpoints\\ISP\\';
 
     public function __construct($productId = null, $provisioningInfo = null)
     {
@@ -17,5 +17,10 @@ class Product extends SmapiModel
     public function getProductId()
     {
         return $this->productId;
+    }
+
+    public function management()
+    {
+        return new Management($this);
     }
 }

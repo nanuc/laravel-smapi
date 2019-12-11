@@ -1,9 +1,9 @@
 <?php
 
-namespace Nanuc\Smapi\SmapiEndpoints\Skill;
+namespace Nanuc\Smapi\SmapiEndpoints\ISP;
 
+use Nanuc\Smapi\Models\Product;
 use Nanuc\Smapi\SmapiEndpoints\SmapiEndpoint;
-use Nanuc\Smapi\Models\Skill as SkillModel;
 
 class ISP extends SmapiEndpoint
 {
@@ -13,16 +13,16 @@ class ISP extends SmapiEndpoint
 
     protected $endpoint;
 
-    public function __construct(SkillModel $skill, $provisioningInfo = [])
+    public function __construct(Product $product, $provisioningInfo = [])
     {
-        $this->skill = $skill;
+        $this->product = $product;
         parent::__construct($provisioningInfo);
     }
 
     protected function getUri()
     {
-        return 'skills/' . $this->skill->getSkillId() .
-            ($this->useStage ? '/stages/' . $this->skill->getStage() : '') .
+        return 'inSkillProducts/' . $this->product->getProductId() .
+            ($this->useStage ? '/stages/' . $this->product->getStage() : '') .
             (strlen($this->endpoint) ? '/' . $this->endpoint : '');
     }
 }

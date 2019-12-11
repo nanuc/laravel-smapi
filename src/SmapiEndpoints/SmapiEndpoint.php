@@ -88,7 +88,7 @@ class SmapiEndpoint
 
     private function buildUri()
     {
-        return $this->version.$this->getUri();
+        return $this->version.'/'.$this->getUri();
     }
 
     protected function getUri()
