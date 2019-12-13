@@ -2,14 +2,16 @@
 
 namespace Nanuc\Smapi\SmapiEndpoints\Skill;
 
+use Nanuc\Smapi\Schemas\InteractionModel;
+
 class InteractionModelOperations extends Skill
 {
     /**
      * https://developer.amazon.com/en-US/docs/alexa/smapi/interaction-model-operations.html#get-interaction-model
      */
-    public function getInteractionModel()
+    public function getInteractionModel($locale)
     {
-        //
+        return InteractionModel::fromJSON($this->get('interactionModel/locales/' . $locale)->interactionModel);
     }
 
     /**

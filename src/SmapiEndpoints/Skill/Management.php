@@ -2,6 +2,8 @@
 
 namespace Nanuc\Smapi\SmapiEndpoints\Skill;
 
+use Nanuc\Smapi\Schemas\Manifest;
+
 class Management extends Skill
 {
     /**
@@ -9,7 +11,7 @@ class Management extends Skill
      */
     public function getSkillInformation()
     {
-        return $this->get('manifest');
+        return Manifest::fromJSON($this->get('manifest')->manifest);
     }
 
     /**
