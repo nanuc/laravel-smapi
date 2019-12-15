@@ -2,6 +2,7 @@
 
 namespace Nanuc\Smapi\SmapiEndpoints\Skill;
 
+use Nanuc\Smapi\Resources\ManifestResource;
 use Nanuc\Smapi\Schemas\Manifest;
 
 class Management extends Skill
@@ -17,17 +18,25 @@ class Management extends Skill
     /**
      * https://developer.amazon.com/en-US/docs/alexa/smapi/skill-operations.html#create-a-skill
      */
-    public function createSkill()
+    public function createSkill($vendorId, Manifest $manifest)
     {
-        //
+        $this->useStage = false;
+        $this->useSkillId = false;
+        
+        $this->post('skills', [
+            'vendorId' => $vendorId,
+            'manifest' => new ManifestResource($manifest),
+        ]);
     }
 
     /**
      * https://developer.amazon.com/en-US/docs/alexa/smapi/skill-operations.html#update-a-skill
      */
-    public function updateSkill()
+    public function updateSkill(Manifest $manifest)
     {
-        //
+        $this->put('manifest', [
+            'manifest' => new ManifestResource($manifest),
+        ]);
     }
 
     /**

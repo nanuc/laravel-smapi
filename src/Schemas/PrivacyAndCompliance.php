@@ -4,20 +4,20 @@ namespace Nanuc\Smapi\Schemas;
 
 class PrivacyAndCompliance extends Schema
 {
-    protected bool $allowsPurchases;
-    protected bool $usesPersonalInfo;
-    protected bool $isChildDirected;
-    protected bool $isExportCompliant;
-    protected bool $containsAds;
-    protected array $locales;
+    public ?array $locales = null;
+    public ?bool $allowsPurchases = null;
+    public ?bool $usesPersonalInfo = null;
+    public ?bool $isChildDirected = null;
+    public ?bool $isExportCompliant = null;
+    public ?bool $containsAds = null;
 
     public function parse()
     {
         $this->locales = $this->parseArray('locales', PrivacyAndComplianceLocale::class, true);
-        $this->distributionCountries = $this->parseArray('distributionCountries');
-        $this->isAvailableWorldwide = $this->parseEntity('isAvailableWorldwide');
-        $this->distributionMode = $this->parseEntity('distributionMode');
-        $this->testingInstructions = $this->parseEntity('testingInstructions');
-        $this->category = $this->parseEntity('category');
+        $this->allowsPurchases = $this->parseEntity('allowsPurchases');
+        $this->usesPersonalInfo = $this->parseEntity('usesPersonalInfo');
+        $this->isChildDirected = $this->parseEntity('isChildDirected');
+        $this->isExportCompliant = $this->parseEntity('isExportCompliant');
+        $this->containsAds = $this->parseEntity('containsAds');
     }
 }

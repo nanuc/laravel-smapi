@@ -4,16 +4,18 @@ namespace Nanuc\Smapi\Schemas;
 
 class Locale extends Schema
 {
-    protected string $summary;
-    protected string $description;
-    protected string $smallIconUri;
-    protected string $largeIconUri;
-    protected array $examplePhrases = [];
-    protected array $keywords = [];
-    protected string $updatesDescription;
+    public ?string $name = null;
+    public ?string $summary = null;
+    public ?string $description = null;
+    public ?string $smallIconUri = null;
+    public ?string $largeIconUri = null;
+    public ?array $examplePhrases = null;
+    public ?array $keywords = null;
+    public ?string $updatesDescription = null;
     
     public function parse()
     {
+        $this->name = $this->parseEntity('name');
         $this->description = $this->parseEntity('description');
         $this->summary = $this->parseEntity('summary');
         $this->smallIconUri = $this->parseEntity('smallIconUri');

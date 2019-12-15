@@ -4,9 +4,9 @@ namespace Nanuc\Smapi\Schemas;
 
 class LanguageModel extends Schema
 {
-    protected string $invocationName;
-    protected array $intents = [];
-    protected array $types = [];
+    public ?string $invocationName = null;
+    public ?array $intents = null;
+    public ?array $types = null;
 
     public function parse()
     {

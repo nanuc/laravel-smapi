@@ -8,14 +8,14 @@ use Nanuc\Smapi\Schemas\SkillInterface;
 
 class Custom extends Api
 {
-    protected Endpoint $endpoint;
-    protected array $regions;
-    protected array $interfaces;
+    public Endpoint $endpoint;
+    public array $regions = [];
+    public array $interfaces = [];
 
     public function parse()
     {
         $this->endpoint = $this->parseEntity('endpoint', Endpoint::class);
         $this->regions = $this->parseArray('regions', Region::class, true);
-        $this->interfaces = $this->parseArray('interfaces', SkillInterface::class, true);
+        $this->interfaces = $this->parseArray('interfaces', SkillInterface::class);
     }
 }

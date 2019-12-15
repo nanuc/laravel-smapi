@@ -4,9 +4,9 @@ namespace Nanuc\Smapi\Schemas;
 
 class Intent extends Schema
 {
-    protected string $name;
-    protected array $slots = [];
-    protected array $samples = [];
+    public ?string $name = null;
+    public ?array $slots = null;
+    public ?array $samples = null;
 
     public function parse()
     {

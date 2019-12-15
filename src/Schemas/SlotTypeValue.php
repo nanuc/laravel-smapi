@@ -4,11 +4,9 @@ namespace Nanuc\Smapi\Schemas;
 
 class SlotTypeValue extends Schema
 {
-    protected int $id;
-    protected SlotTypeValueName $name;
-
-    protected string $fieldName = 'value';
-
+    public ?int $id = null;
+    public ?SlotTypeValueName $name = null;
+    
     public function parse()
     {
         $this->id = $this->parseEntity('id');

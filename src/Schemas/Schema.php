@@ -51,7 +51,7 @@ abstract class Schema
     public function parseEntity($field, $target = null)
     {
         if(!property_exists($this->json, $field)) {
-            return '';
+            return $target ? new $target : null;
         }
 
         if(class_exists($target)) {

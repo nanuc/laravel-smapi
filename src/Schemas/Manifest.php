@@ -2,14 +2,16 @@
 
 namespace Nanuc\Smapi\Schemas;
 
+use Illuminate\Contracts\Support\Jsonable;
+
 class Manifest extends Schema
 {
-    protected string $manifestVersion;
-    protected PublishingInformation $publishingInformation;
-    protected PrivacyAndCompliance $privacyAndCompliance;
-    protected array $permissions;
-    protected Events $event;
-    protected array $apis;
+    public ?string $manifestVersion = null;
+    public ?PublishingInformation $publishingInformation = null;
+    public ?PrivacyAndCompliance $privacyAndCompliance = null;
+    public ?array $permissions = null;
+    public ?Events $event = null;
+    public ?array $apis = null;
     
     public function parse()
     {
@@ -17,6 +19,6 @@ class Manifest extends Schema
         $this->publishingInformation = $this->parseEntity('publishingInformation', PublishingInformation::class);
         $this->privacyAndCompliance = $this->parseEntity('privacyAndCompliance', PrivacyAndCompliance::class);
         $this->permissions = $this->parseArray('permissions', Permission::class);
-        $this->apis = $this->parseArray('apis', Apis\Api::class, true);
+        $this->apis = $this->parseArray('apis', Api\Api::class, true);
     }
 }

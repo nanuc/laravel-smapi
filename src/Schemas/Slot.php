@@ -4,9 +4,9 @@ namespace Nanuc\Smapi\Schemas;
 
 class Slot extends Schema
 {
-    protected string $name;
-    protected string $type;
-    protected array $samples = [];
+    public ?string $name = null;
+    public ?string $type = null;
+    public ?array $samples = null;
 
     public function parse()
     {

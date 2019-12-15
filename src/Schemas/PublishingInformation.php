@@ -4,12 +4,13 @@ namespace Nanuc\Smapi\Schemas;
 
 class PublishingInformation extends Schema
 {
-    protected array $locales;
-    protected array $distributionCountries = [];
-    protected bool $isAvailableWorldwide;
-    protected string $distributionMode;
-    protected string $testingInstructions;
-    protected string $category;
+    public array $locales = [];
+    public array $distributionCountries = [];
+    public ?bool $isAvailableWorldwide = null;
+    public ?string $distributionMode = null;
+    public ?string $testingInstructions = null;
+    public ?string $category = null;
+    public ?AutomaticDistribution $automaticDistribution = null;
 
     public function parse()
     {
@@ -19,5 +20,6 @@ class PublishingInformation extends Schema
         $this->distributionMode = $this->parseEntity('distributionMode');
         $this->testingInstructions = $this->parseEntity('testingInstructions');
         $this->category = $this->parseEntity('category');
+        $this->automaticDistribution = $this->parseEntity('automaticDistribution', AutomaticDistribution::class);
     }
 }
