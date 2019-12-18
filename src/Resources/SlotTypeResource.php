@@ -15,7 +15,8 @@ class SlotTypeResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'name' => $this->resource->name,
+            'values' => SlotTypeValueResource::collection($this->resource->values),
         ];
     }
 }

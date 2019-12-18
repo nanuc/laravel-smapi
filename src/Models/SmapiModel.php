@@ -3,8 +3,9 @@
 namespace Nanuc\Smapi\Models;
 
 use Nanuc\Smapi\Exceptions\SmapiException;
+use Nanuc\Smapi\SmapiEndpoints\Skill\VendorManagement;
 
-abstract class SmapiModel
+class SmapiModel
 {
     protected $stage = 'development';
 
@@ -34,5 +35,11 @@ abstract class SmapiModel
     public function getStage()
     {
         return $this->stage;
+    }
+
+
+    public function vendorManagement()
+    {
+        return new VendorManagement($this);
     }
 }

@@ -9,7 +9,7 @@ class SlotTypeValueName extends Schema
 
     public function parse()
     {
-        $this->id = $this->parseEntity('value');
-        $this->id = $this->parseArray('synonyms');
+        $this->value = $this->parseEntity('value');
+        $this->synonyms = $this->parseArray('synonyms');
     }
 }

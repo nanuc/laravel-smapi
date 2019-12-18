@@ -15,7 +15,9 @@ class IntentResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'name' => $this->resource->name,
+            'slots' => SlotResource::collection($this->resource->slots),
+            'samples' => $this->resource->samples,
         ];
     }
 }

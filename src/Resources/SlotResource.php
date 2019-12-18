@@ -15,7 +15,9 @@ class SlotResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'name' => $this->resource->name,
+            'type' => $this->resource->type,
+            'samples' => $this->resource->samples,
         ];
     }
 }

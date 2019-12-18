@@ -78,9 +78,4 @@ class Skill extends SmapiModel
     {
         return new PackageManagement($this);
     }
-
-    public function vendorManagement()
-    {
-        return new VendorManagement($this);
-    }
 }

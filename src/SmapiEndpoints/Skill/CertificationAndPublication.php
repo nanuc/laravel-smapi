@@ -57,8 +57,8 @@ class CertificationAndPublication extends Skill
     /**
      * https://developer.amazon.com/en-US/docs/alexa/smapi/skill-certification-operations.html#hide-remove-unpublish
      */
-    public function hideOrRemove()
+    public function hideOrRemove($type = 'REMOVE', $reason = 'Other')
     {
-        //
+            return $this->post('unpublish', compact('type', 'reason'));
     }
 }

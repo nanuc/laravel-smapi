@@ -13,6 +13,6 @@ class VendorManagement extends SmapiEndpoint
      */
     public function getVendorList()
     {
-        return $this->get();
+        return $this->get()->vendors;
     }
 }

@@ -15,7 +15,7 @@ class InteractionModelResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'languageModel' => new LanguageModelResource($this->resource->languageModel),
         ];
     }
 }

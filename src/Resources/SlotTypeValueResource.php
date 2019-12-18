@@ -15,7 +15,8 @@ class SlotTypeValueResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'id' => $this->resource->id,
+            'name' => new SlotTypeValueNameResource($this->resource->name),
         ];
     }
 }

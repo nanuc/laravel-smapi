@@ -93,7 +93,7 @@ class SmapiEndpoint
 
     protected function getUri()
     {
-        return strlen($this->endpoint) ? '/' . $this->endpoint : '';
+        return strlen($this->endpoint) ? $this->endpoint : '';
     }
 
     /**

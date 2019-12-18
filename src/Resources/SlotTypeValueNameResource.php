@@ -15,7 +15,8 @@ class SlotTypeValueNameResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'value' => $this->resource->value,
+            'synonyms' => $this->resource->synonyms,
         ];
     }
 }

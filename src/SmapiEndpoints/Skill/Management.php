@@ -23,7 +23,7 @@ class Management extends Skill
         $this->useStage = false;
         $this->useSkillId = false;
         
-        $this->post('skills', [
+        return $this->post('skills', [
             'vendorId' => $vendorId,
             'manifest' => new ManifestResource($manifest),
         ]);
@@ -44,7 +44,8 @@ class Management extends Skill
      */
     public function getStatus()
     {
-        //
+        $this->useStage = false;
+        return $this->get('status');
     }
 
     /**

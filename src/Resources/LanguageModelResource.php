@@ -15,7 +15,9 @@ class LanguageModelResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'invocationName' => $this->resource->invocationName,
+            'intents' => IntentResource::collection($this->resource->intents),
+            'types' => SlotTypeResource::collection($this->resource->types),
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Nanuc\Smapi\SmapiEndpoints\Skill;
 
+use Nanuc\Smapi\Resources\InteractionModelResource;
 use Nanuc\Smapi\Schemas\InteractionModel;
 
 class InteractionModelOperations extends Skill
@@ -25,9 +26,11 @@ class InteractionModelOperations extends Skill
     /**
      * https://developer.amazon.com/en-US/docs/alexa/smapi/interaction-model-operations.html#update-interaction-model
      */
-    public function updateInteractionModel()
+    public function updateInteractionModel($locale, InteractionModel $interactionModel)
     {
-        //
+        $this->put('interactionModel/locales/' . $locale, [
+            'interactionModel' => new InteractionModelResource($interactionModel)
+        ]);
     }
 
     /**
