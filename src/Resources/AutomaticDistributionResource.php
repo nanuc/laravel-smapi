@@ -15,7 +15,7 @@ class AutomaticDistributionResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'isActive' => false
         ];
     }
 }
