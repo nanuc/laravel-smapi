@@ -24,11 +24,6 @@ class SmapiEndpoint
         $this->provisioningInfo = $provisioningInfo;
     }
 
-    protected function getHttpStatus()
-    {
-        return $this->request('GET')->getStatusCode();
-    }
-
     protected function get($endpoint = null)
     {
         return $this->runHttpMethod('get', $endpoint);
@@ -57,6 +52,14 @@ class SmapiEndpoint
         return json_decode($this->request($method, $data)->getBody());
     }
 
+    protected function getHttpStatus($method = 'GET', $endpoint = null)
+    {
+        if($endpoint) {
+            $this->endpoint = $endpoint;
+        }
+        return $this->request($method)->getStatusCode();
+    }
+
     /**
      * @param $method
      * @param array $data
@@ -76,10 +79,12 @@ class SmapiEndpoint
         $requestData['headers'] = [
             'Authorization' => $this->accessToken(),
             'Content-Type' => 'application/json',
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
+            'Accept-Language' => 'en-US',
         ];
 
         try {
+            l($this->buildUri());
             return $client->request($method, $this->buildUri(), $requestData);
         } catch (\Exception $e) {
             throw new SmapiException($e->getResponse()->getBody()->getContents());

@@ -63,6 +63,7 @@ class Management extends Skill
      */
     public function deleteSkill()
     {
-        //
+        $this->useStage = false;
+        return $this->delete();
     }
 }
