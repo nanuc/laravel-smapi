@@ -27,7 +27,7 @@ class CertificationAndPublication extends Skill
      */
     public function getCurrentPublishingDetails()
     {
-        //
+        return $this->get('publications/~latest');
     }
 
     /**
@@ -59,6 +59,6 @@ class CertificationAndPublication extends Skill
      */
     public function hideOrRemove($type = 'REMOVE', $reason = 'Other')
     {
-            return $this->post('unpublish', compact('type', 'reason'));
+        return $this->post('unpublish', compact('type', 'reason'));
     }
 }
