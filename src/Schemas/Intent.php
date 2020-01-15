@@ -4,9 +4,9 @@ namespace Nanuc\Smapi\Schemas;
 
 class Intent extends Schema
 {
-    public ?string $name = null;
-    public ?array $samples = [];
-    public ?array $slots = [];
+    public $name = null;
+    public $samples = [];
+    public $slots = [];
 
     public function __construct($name = null, $samples = [], $slots = [])
     {

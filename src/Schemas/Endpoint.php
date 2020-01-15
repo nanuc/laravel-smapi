@@ -4,8 +4,8 @@ namespace Nanuc\Smapi\Schemas;
 
 class Endpoint extends Schema
 {
-    public ?string $uri = null;
-    public ?string $sslCertificateType = null;
+    public $uri = null;
+    public $sslCertificateType = null;
 
     public function parse()
     {

@@ -4,12 +4,12 @@ namespace Nanuc\Smapi\Schemas;
 
 class PrivacyAndCompliance extends Schema
 {
-    public ?array $locales = null;
-    public ?bool $allowsPurchases = null;
-    public ?bool $usesPersonalInfo = null;
-    public ?bool $isChildDirected = null;
-    public ?bool $isExportCompliant = null;
-    public ?bool $containsAds = null;
+    public $locales = null;
+    public $allowsPurchases = null;
+    public $usesPersonalInfo = null;
+    public $isChildDirected = null;
+    public $isExportCompliant = null;
+    public $containsAds = null;
 
     public function parse()
     {

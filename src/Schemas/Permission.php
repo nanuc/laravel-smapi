@@ -4,7 +4,7 @@ namespace Nanuc\Smapi\Schemas;
 
 class Permission extends Schema
 {
-    public ?string $name = null;
+    public $name = null;
 
     public function parse()
     {

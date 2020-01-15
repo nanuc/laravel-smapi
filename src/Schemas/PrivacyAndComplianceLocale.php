@@ -4,8 +4,8 @@ namespace Nanuc\Smapi\Schemas;
 
 class PrivacyAndComplianceLocale extends Schema
 {
-    public ?string $privacyPolicyUrl = null;
-    public ?string $termsOfUse = null;
+    public $privacyPolicyUrl = null;
+    public $termsOfUse = null;
     
     public function parse()
     {

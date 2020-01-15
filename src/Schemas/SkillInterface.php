@@ -4,7 +4,7 @@ namespace Nanuc\Smapi\Schemas;
 
 class SkillInterface extends Schema
 {
-    public ?string $type = null;
+    public $type = null;
 
     public function parse()
     {

@@ -6,12 +6,12 @@ use Illuminate\Contracts\Support\Jsonable;
 
 class Manifest extends Schema
 {
-    public ?string $manifestVersion = null;
-    public ?PublishingInformation $publishingInformation = null;
-    public ?PrivacyAndCompliance $privacyAndCompliance = null;
-    public ?array $permissions = null;
-    public ?Events $event = null;
-    public ?array $apis = null;
+    public $manifestVersion = null;
+    public $publishingInformation = null;
+    public $privacyAndCompliance = null;
+    public $permissions = null;
+    public $event = null;
+    public $apis = null;
     
     public function parse()
     {

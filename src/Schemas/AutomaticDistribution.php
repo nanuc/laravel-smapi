@@ -4,8 +4,8 @@ namespace Nanuc\Smapi\Schemas;
 
 class AutomaticDistribution extends Schema
 {
-    public ?bool $isActive = null;
-    public ?array $sourceLocaleForLanguages = null;
+    public $isActive = null;
+    public $sourceLocaleForLanguages = null;
 
     public function parse()
     {

@@ -8,9 +8,9 @@ use Nanuc\Smapi\Schemas\SkillInterface;
 
 class Custom extends Api
 {
-    public Endpoint $endpoint;
-    public array $regions = [];
-    public array $interfaces = [];
+    public $endpoint;
+    public $regions = [];
+    public $interfaces = [];
 
     public function parse()
     {

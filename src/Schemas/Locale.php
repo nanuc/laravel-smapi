@@ -4,14 +4,14 @@ namespace Nanuc\Smapi\Schemas;
 
 class Locale extends Schema
 {
-    public ?string $name = null;
-    public ?string $summary = null;
-    public ?string $description = null;
-    public ?string $smallIconUri = null;
-    public ?string $largeIconUri = null;
-    public ?array $examplePhrases = null;
-    public ?array $keywords = null;
-    public ?string $updatesDescription = null;
+    public $name = null;
+    public $summary = null;
+    public $description = null;
+    public $smallIconUri = null;
+    public $largeIconUri = null;
+    public $examplePhrases = null;
+    public $keywords = null;
+    public $updatesDescription = null;
     
     public function parse()
     {

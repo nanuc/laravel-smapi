@@ -4,13 +4,13 @@ namespace Nanuc\Smapi\Schemas;
 
 class PublishingInformation extends Schema
 {
-    public array $locales = [];
-    public array $distributionCountries = [];
-    public ?bool $isAvailableWorldwide = null;
-    public ?string $distributionMode = null;
-    public ?string $testingInstructions = null;
-    public ?string $category = null;
-    public ?AutomaticDistribution $automaticDistribution = null;
+    public $locales = [];
+    public $distributionCountries = [];
+    public $isAvailableWorldwide = null;
+    public $distributionMode = null;
+    public $testingInstructions = null;
+    public $category = null;
+    public $automaticDistribution = null;
 
     public function parse()
     {

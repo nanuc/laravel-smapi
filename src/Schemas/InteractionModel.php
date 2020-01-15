@@ -4,9 +4,9 @@ namespace Nanuc\Smapi\Schemas;
 
 class InteractionModel extends Schema
 {
-    public ?LanguageModel $languageModel = null;
-    public ?Dialog $dialog = null;
-    public ?array $prompts = null;
+    public $languageModel = null;
+    public $dialog = null;
+    public $prompts = null;
 
     public function parse()
     {

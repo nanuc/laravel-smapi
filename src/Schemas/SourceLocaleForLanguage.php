@@ -4,8 +4,8 @@ namespace Nanuc\Smapi\Schemas;
 
 class SourceLocaleForLanguage extends Schema
 {
-    public ?string $language = null;
-    public ?string $sourceLocale = null;
+    public $language = null;
+    public $sourceLocale = null;
 
     public function parse()
     {

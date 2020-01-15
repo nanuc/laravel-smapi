@@ -4,7 +4,7 @@ namespace Nanuc\Smapi\Schemas;
 
 class Region extends Schema
 {
-    public ?Endpoint $endpoint = null;
+    public $endpoint = null;
 
     public function parse()
     {

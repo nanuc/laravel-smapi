@@ -4,8 +4,8 @@ namespace Nanuc\Smapi\Schemas;
 
 class SlotType extends Schema
 {
-    public ?string $name = null;
-    public ?array $values = null;
+    public $name = null;
+    public $values = null;
 
     public function parse()
     {
