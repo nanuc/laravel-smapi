@@ -5,6 +5,7 @@ namespace Nanuc\Smapi\Models;
 use Nanuc\Smapi\SmapiEndpoints\Skill\AccountLinkingManagement;
 use Nanuc\Smapi\SmapiEndpoints\Skill\CertificationAndPublication;
 use Nanuc\Smapi\SmapiEndpoints\Skill\Credentials;
+use Nanuc\Smapi\SmapiEndpoints\Skill\DevelopmentNotifications;
 use Nanuc\Smapi\SmapiEndpoints\Skill\Enablement;
 use Nanuc\Smapi\SmapiEndpoints\Skill\InSkillProductManagement;
 use Nanuc\Smapi\SmapiEndpoints\Skill\IntentRequestHistory;
@@ -77,5 +78,10 @@ class Skill extends SmapiModel
     public function packageManagement()
     {
         return new PackageManagement($this);
+    }
+
+    public function developmentNotifications()
+    {
+        return new DevelopmentNotifications($this);
     }
 }

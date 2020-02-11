@@ -29,9 +29,9 @@ class SmapiEndpoint
         return $this->runHttpMethod('get', $endpoint);
     }
 
-    protected function post($endpoint = null, $data = [])
+    protected function post($endpoint = null, $data = [], &$headers = [])
     {
-        return $this->runHttpMethod('post', $endpoint, $data);
+        return $this->runHttpMethod('post', $endpoint, $data, $headers);
     }
 
     protected function put($endpoint = null, $data = [])
@@ -44,12 +44,14 @@ class SmapiEndpoint
         return $this->runHttpMethod('delete', $endpoint);
     }
 
-    protected function runHttpMethod($method, $endpoint = null, $data = [])
+    protected function runHttpMethod($method, $endpoint = null, $data = [], &$headers = [])
     {
         if($endpoint) {
             $this->endpoint = $endpoint;
         }
-        return json_decode($this->request($method, $data)->getBody());
+        $response = $this->request($method, $data);
+        $headers = $response->getHeaders();
+        return json_decode($response->getBody());
     }
 
     protected function getHttpStatus($method = 'GET', $endpoint = null)
@@ -84,7 +86,6 @@ class SmapiEndpoint
         ];
 
         try {
-            l($this->buildUri());
             return $client->request($method, $this->buildUri(), $requestData);
         } catch (\Exception $e) {
             throw new SmapiException($e->getResponse()->getBody()->getContents());
@@ -150,7 +151,7 @@ class SmapiEndpoint
 
     private function getAccessTokenCacheKey()
     {
-        return 'accessTokenCacheKey-' . $this->provisioningInfo('vendor-id');
+        return 'accessTokenCacheKey-' . md5($this->provisioningInfo('refresh-token'));
     }
 
     private function provisioningInfo($key)

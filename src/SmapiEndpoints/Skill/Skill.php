@@ -15,10 +15,10 @@ class Skill extends SmapiEndpoint
 
     protected $endpoint;
 
-    public function __construct(SkillModel $skill, $provisioningInfo = [])
+    public function __construct(SkillModel $skill)
     {
         $this->skill = $skill;
-        parent::__construct($provisioningInfo);
+        parent::__construct($skill->getProvisioningInfo());
     }
 
     protected function getUri()

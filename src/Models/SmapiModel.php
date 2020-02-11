@@ -37,9 +37,13 @@ class SmapiModel
         return $this->stage;
     }
 
-
     public function vendorManagement()
     {
-        return new VendorManagement($this);
+        return new VendorManagement($this->provisioningInfo);
+    }
+
+    public function getProvisioningInfo()
+    {
+        return $this->provisioningInfo;
     }
 }
