@@ -16,6 +16,7 @@ class InterfaceResource extends JsonResource
     {
         return [
             'type' => $this->resource->type,
+            'supportedViewports' => $this->when($this->resource->supportedViewports, $this->resource->supportedViewports),
         ];
     }
 }

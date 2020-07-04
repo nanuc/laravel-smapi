@@ -3,27 +3,33 @@
 namespace Nanuc\Smapi\Exceptions;
 
 use Exception;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 use Nanuc\Smapi\Lib\Error;
 
 class SmapiException extends Exception
 {
-    protected $error;
-    protected $originalMessage;
+    public $smapiMessage;
 
-    public function __construct($exceptionContents)
-    {
-        $this->originalMessage = $exceptionContents;
-        $this->error = Error::fromJson($exceptionContents);
-        parent::__construct($this->error->message);
-    }
+    public $violations;
 
-    public function getError()
-    {
-        return $this->error;
-    }
+    public $skillId;
 
-    public function getOriginalMessage()
+    public $originalError;
+
+    public $smapiRequest;
+
+    public function __construct($error, $skillId, $smapiRequest)
     {
-        return $this->originalMessage;
+        $this->smapiMessage = Arr::get($error, 'message');
+        $this->violations = Arr::get($error, 'violations', []);
+        $this->skillId = $skillId;
+        $this->originalError = $error;
+        $this->smapiRequest = $smapiRequest;
+
+        $error = json_encode($error);
+
+        parent::__construct($error);
+        Log::channel(config('smapi.logging.errors.channel'))->info('Amazon Deployment Exception for '.$this->skillId.': '.$error);
     }
 }

@@ -2,10 +2,12 @@
 
 namespace Nanuc\Smapi\SmapiEndpoints;
 
+use App\Exceptions\AmazonDeploymentException;
 use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
 use Nanuc\Smapi\Exceptions\SmapiException;
 use Illuminate\Support\Facades\Cache;
+use Nanuc\Smapi\Models\SmapiRequest;
 
 class SmapiEndpoint
 {
@@ -85,11 +87,42 @@ class SmapiEndpoint
             'Accept-Language' => 'en-US',
         ];
 
+
+        $smapiRequest = new SmapiRequest();
+        $smapiRequest->skill_id = $this->skill->getSkillId();
+        $smapiRequest->method = strtolower($method);
+        $smapiRequest->url = $this->buildUri();
+        $smapiRequest->data = $data;
+
         try {
-            return $client->request($method, $this->buildUri(), $requestData);
+            $startTime = microtime(true);
+            $response = $client->request($method, $this->buildUri(), $requestData);
         } catch (\Exception $e) {
-            throw new SmapiException($e->getResponse()->getBody()->getContents());
+            $smapiRequest->runtime = 1000 * (microtime(true) - $startTime);
+
+            if (method_exists($e, 'getResponse')) {
+                $smapiRequest->response_status = $e->getResponse()->getStatusCode();
+                $smapiRequest->response_body = json_decode($e->getResponse()->getBody());
+                if(config('smapi.logging.requests.database')) {
+                    $smapiRequest->save();
+                }
+                throw new SmapiException(json_decode($e->getResponse()->getBody()), $this->skill->getSkillId(), $smapiRequest);
+            } else {
+                if(config('smapi.logging.requests.database')) {
+                    $smapiRequest->save();
+                }
+                throw new SmapiException(get_class($e), $this->skill->getSkillId(), $smapiRequest ?? null);
+            }
         }
+
+        if(config('smapi.logging.requests.database')) {
+            $smapiRequest->runtime = 1000 * (microtime(true) - $startTime);
+            $smapiRequest->response_status = $response->getStatusCode();
+            $smapiRequest->response_body = json_decode($response->getBody());
+            $smapiRequest->save();
+        }
+
+        return $response;
     }
 
     private function buildUri()

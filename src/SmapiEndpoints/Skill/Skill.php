@@ -21,6 +21,11 @@ class Skill extends SmapiEndpoint
         parent::__construct($skill->getProvisioningInfo());
     }
 
+    public function getSkill()
+    {
+        return $this->skill;
+    }
+
     protected function getUri()
     {
         return

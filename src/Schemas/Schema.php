@@ -7,10 +7,20 @@ use Illuminate\Support\Str;
 
 abstract class Schema
 {
+    public const SSL_CERTIFICATE_TYPE_SELF_SIGNED = 'SelfSigned';
+    public const SSL_CERTIFICATE_TYPE_TRUSTED = 'Trusted';
+    public const SSL_CERTIFICATE_TYPE_WILDCARD = 'Wildcard';
+
+    public const SSML = 'SSML';
+    public const PLAIN_TEXT = 'PlainText';
+
+    public const DELEGATION_STRATEGY_SKILL_RESPONSE = 'SKILL_RESPONSE';
+    public const DELEGATION_STRATEGY_ALWAYS= 'ALWAYS';
+
     public static $classMapping = [
         'custom' => \Nanuc\Smapi\Schemas\Api\Custom::class
     ];
-    
+
     public static function fromJSON($json, $key = null)
     {
         if($key && $className = Arr::get(self::$classMapping, $key)) {
