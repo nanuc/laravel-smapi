@@ -17,6 +17,10 @@ abstract class Schema
     public const DELEGATION_STRATEGY_SKILL_RESPONSE = 'SKILL_RESPONSE';
     public const DELEGATION_STRATEGY_ALWAYS= 'ALWAYS';
 
+    public const FALLBACK_INTENT_SENSITIVITY_LEVEL_HIGH = 'HIGH';
+    public const FALLBACK_INTENT_SENSITIVITY_LEVEL_MEDIUM = 'MEDIUM';
+    public const FALLBACK_INTENT_SENSITIVITY_LEVEL_LOW = 'LOW';
+
     public static $classMapping = [
         'custom' => \Nanuc\Smapi\Schemas\Api\Custom::class
     ];

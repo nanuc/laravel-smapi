@@ -18,6 +18,7 @@ class LanguageModelResource extends JsonResource
             'invocationName' => $this->resource->invocationName,
             'intents' => IntentResource::collection($this->resource->intents),
             'types' => SlotTypeResource::collection($this->resource->types),
+            'modelConfiguration' => $this->when(count($this->resource->modelConfiguration) > 0, $this->resource->modelConfiguration)
         ];
     }
 }
