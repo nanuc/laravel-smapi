@@ -25,7 +25,7 @@ class Testing extends Skill
         return new NLUEvaluationTool($this->skill);
     }
 
-    public function Simulation()
+    public function simulation()
     {
         return new Simulation($this->skill);
     }
