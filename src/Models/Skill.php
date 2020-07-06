@@ -13,6 +13,7 @@ use Nanuc\Smapi\SmapiEndpoints\Skill\InteractionModelOperations;
 use Nanuc\Smapi\SmapiEndpoints\Skill\Management;
 use Nanuc\Smapi\SmapiEndpoints\Skill\Metrics;
 use Nanuc\Smapi\SmapiEndpoints\Skill\PackageManagement;
+use Nanuc\Smapi\SmapiEndpoints\Skill\Testing\Testing;
 use Nanuc\Smapi\SmapiEndpoints\Skill\VendorManagement;
 
 class Skill extends SmapiModel
@@ -83,5 +84,10 @@ class Skill extends SmapiModel
     public function developmentNotifications()
     {
         return new DevelopmentNotifications($this);
+    }
+
+    public function testing()
+    {
+        return new Testing($this);
     }
 }
