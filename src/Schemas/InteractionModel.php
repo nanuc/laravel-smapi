@@ -11,5 +11,7 @@ class InteractionModel extends Schema
     public function parse()
     {
         $this->languageModel = $this->parseEntity('languageModel', LanguageModel::class);
+        $this->dialog = $this->parseEntity('dialog', Dialog::class);
+        $this->prompts = $this->parseArray('prompts', Prompt::class);
     }
 }

@@ -17,6 +17,5 @@ class Variation extends Schema
     {
         $this->type = $this->parseEntity('type');
         $this->value = $this->parseEntity('value');
-
     }
 }
