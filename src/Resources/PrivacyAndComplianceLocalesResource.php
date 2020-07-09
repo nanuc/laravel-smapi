@@ -4,7 +4,7 @@ namespace Nanuc\Smapi\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PrivacyAndComplianceLocaleResource extends JsonResource
+class PrivacyAndComplianceLocalesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,9 +14,10 @@ class PrivacyAndComplianceLocaleResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'privacyPolicyUrl' => $this->resource->privacyPolicyUrl,
-            'termsOfUseUrl' => $this->resource->termsOfUseUrl,
-        ];
+        $locales = [];
+        foreach($this->resource as $localeKey => $locale) {
+            $locales[$localeKey] = new PrivacyAndComplianceLocaleResource($locale);
+        }
+        return $locales;
     }
 }

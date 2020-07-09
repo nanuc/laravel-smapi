@@ -17,6 +17,7 @@ class ManifestResource extends JsonResource
         return [
             'apis' => ApiResource::collection(collect($this->resource->apis)),
             'publishingInformation' => new PublishingInformationResource($this->resource->publishingInformation),
+            'privacyAndCompliance' => new PrivacyAndComplianceResource($this->resource->privacyAndCompliance),
         ];
     }
 }

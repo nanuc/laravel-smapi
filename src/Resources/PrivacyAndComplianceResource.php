@@ -15,7 +15,12 @@ class PrivacyAndComplianceResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'allowsPurchases' => $this->resource->allowsPurchases,
+            'usesPersonalInfo' => $this->resource->usesPersonalInfo,
+            'isChildDirected' => $this->resource->isChildDirected,
+            'isExportCompliant' => $this->resource->isExportCompliant,
+            'containsAds' => $this->resource->containsAds,
+            'locales' => new PrivacyAndComplianceLocalesResource($this->resource->locales),
         ];
     }
 }

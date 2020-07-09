@@ -6,13 +6,13 @@ use Illuminate\Contracts\Support\Jsonable;
 
 class Manifest extends Schema
 {
-    public $manifestVersion = null;
-    public $publishingInformation = null;
-    public $privacyAndCompliance = null;
-    public $permissions = null;
-    public $event = null;
-    public $apis = null;
-    
+    public $manifestVersion;
+    public $publishingInformation;
+    public $privacyAndCompliance;
+    public $permissions;
+    public $event;
+    public $apis;
+
     public function parse()
     {
         $this->manifestVersion = $this->parseEntity('manifestVersion');
