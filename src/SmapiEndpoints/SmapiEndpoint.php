@@ -89,7 +89,7 @@ class SmapiEndpoint
 
 
         $smapiRequest = new SmapiRequest();
-        $smapiRequest->skill_id = $this->skill->getSkillId();
+        $smapiRequest->skill_id = property_exists($this, 'skill') ? $this->skill->getSkillId() : null;
         $smapiRequest->method = strtolower($method);
         $smapiRequest->url = $this->buildUri();
         $smapiRequest->data = $data;
