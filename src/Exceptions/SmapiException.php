@@ -19,7 +19,7 @@ class SmapiException extends Exception
 
     public $smapiRequest;
 
-    public function __construct($error, $skillId, $smapiRequest)
+    public function __construct($error, $skillId = null, $smapiRequest = null)
     {
         $this->smapiMessage = Arr::get($error, 'message');
         $this->violations = Arr::get($error, 'violations', []);
