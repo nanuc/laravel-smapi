@@ -15,7 +15,8 @@ class AutomaticDistributionResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'isActive' => false
+            'isActive' => $this->resource->isActive,
+            'sourceLocaleForLanguages' => $this->resource->sourceLocaleForLanguages,
         ];
     }
 }
