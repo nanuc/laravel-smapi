@@ -51,11 +51,14 @@ class Management extends Skill
     /**
      * https://developer.amazon.com/en-US/docs/alexa/smapi/skill-operations.html#list-skills
      */
-    public function listSkills($vendorId)
+    public function listSkills($vendorId, $skillId = null)
     {
         $this->useStage = false;
         $this->useSkillId = false;
-        return $this->get('skills?vendorId='.$vendorId);
+
+        $skillParameter = $skillId ? '&skillId=' . $skillId : '';
+
+        return $this->get('skills?vendorId='.$vendorId.$skillParameter);
     }
 
     /**

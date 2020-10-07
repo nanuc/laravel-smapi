@@ -2,6 +2,8 @@
 
 namespace Nanuc\Smapi\SmapiEndpoints\Skill;
 
+use Illuminate\Support\Arr;
+
 class CertificationAndPublication extends Skill
 {
     protected $useStage = false;
@@ -9,9 +11,12 @@ class CertificationAndPublication extends Skill
     /**
      * https://developer.amazon.com/en-US/docs/alexa/smapi/skill-certification-operations.html#submit-for-certification
      */
-    public function submitForCertification()
+    public function submitForCertification($publish = true)
     {
-        //
+        $response = $this->post('submit', [
+            'publicationMethod' => $publish ? 'AUTO_PUBLISHING' : 'MANUAL_PUBLISHING'
+        ], $headers);
+        return Arr::get($headers, 'Location');
     }
 
     /**
@@ -19,7 +24,7 @@ class CertificationAndPublication extends Skill
      */
     public function publishCertifiedSkill()
     {
-        //
+
     }
 
     /**
@@ -41,9 +46,9 @@ class CertificationAndPublication extends Skill
     /**
      * https://developer.amazon.com/en-US/docs/alexa/smapi/skill-certification-operations.html#get-certification-details
      */
-    public function getCertificationDetails()
+    public function getCertificationDetails($certificationId)
     {
-        //
+        return $this->get('certifications/' . $certificationId);
     }
 
     /**
@@ -51,7 +56,9 @@ class CertificationAndPublication extends Skill
      */
     public function withdrawFromCertification()
     {
-        //
+        return $this->post('withdraw', [
+            'reason' => 'DISCOVERED_ISSUE'
+        ]);
     }
 
     /**
