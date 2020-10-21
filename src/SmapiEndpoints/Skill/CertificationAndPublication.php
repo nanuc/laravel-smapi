@@ -22,9 +22,11 @@ class CertificationAndPublication extends Skill
     /**
      * https://developer.amazon.com/en-US/docs/alexa/smapi/skill-certification-operations.html#publish-skill
      */
-    public function publishCertifiedSkill()
+    public function publishCertifiedSkill($publishesAt = null)
     {
+        $data = $publishesAt ? ['publishesAt' => $publishesAt->toIso8601ZuluString()] : [];
 
+        return $this->post('publications', $data);
     }
 
     /**
