@@ -106,7 +106,8 @@ class SmapiEndpoint
                 if(config('smapi.logging.requests.database')) {
                     $smapiRequest->save();
                 }
-                throw new SmapiException(json_decode($e->getResponse()->getBody()), $this->skill->getSkillId(), $smapiRequest);
+
+                throw new SmapiException(json_decode($e->getResponse()->getBody()), property_exists($this, 'skill') ? $this->skill->getSkillId() : null, $smapiRequest);
             } else {
                 if(config('smapi.logging.requests.database')) {
                     $smapiRequest->save();
