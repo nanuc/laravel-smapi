@@ -13,10 +13,10 @@ class Catalog extends SmapiEndpoint
 
     protected $endpoint;
 
-    public function __construct(\Nanuc\Smapi\Models\Catalog $catalog, $provisioningInfo = [])
+    public function __construct(\Nanuc\Smapi\Models\Catalog $catalog)
     {
         $this->catalog = $catalog;
-        parent::__construct($provisioningInfo);
+        parent::__construct($catalog->getProvisioningInfo());
     }
 
     protected function getCatalog()

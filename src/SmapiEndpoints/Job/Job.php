@@ -13,10 +13,10 @@ class Job extends SmapiEndpoint
 
     protected $endpoint;
 
-    public function __construct(\Nanuc\Smapi\Models\Job $job, $provisioningInfo = [])
+    public function __construct(\Nanuc\Smapi\Models\Job $job)
     {
         $this->job = $job;
-        parent::__construct($provisioningInfo);
+        parent::__construct($job->getProvisioningInfo());
     }
 
     protected function getJob()
