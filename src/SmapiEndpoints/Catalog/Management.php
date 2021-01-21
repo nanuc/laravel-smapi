@@ -24,7 +24,7 @@ class Management extends Catalog
     /**
      * https://developer.amazon.com/en-US/docs/alexa/smapi/reference-based-catalog-management.html#get-catalog-definition
      */
-    public function getCatalog()
+    public function getCatalogDefinition()
     {
         return $this->get();
     }
