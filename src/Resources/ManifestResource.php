@@ -18,6 +18,8 @@ class ManifestResource extends JsonResource
             'apis' => ApiResource::collection(collect($this->resource->apis)),
             'publishingInformation' => new PublishingInformationResource($this->resource->publishingInformation),
             'privacyAndCompliance' => new PrivacyAndComplianceResource($this->resource->privacyAndCompliance),
+            'permissions' => PermissionResource::collection(collect($this->resource->permissions)),
+            'events' => new EventsResource($this->resource->events),
         ];
     }
 }

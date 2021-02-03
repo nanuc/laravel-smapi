@@ -69,8 +69,19 @@ class Management extends Catalog
         return $this->get('versions/' . $version . '/values');
     }
 
+    /**
+     * https://developer.amazon.com/en-US/docs/alexa/smapi/reference-based-catalog-management.html#catalog-update-status
+     */
     public function getCatalogUpdateStatus($updateRequestId)
     {
         return $this->get('updateRequest/' . $updateRequestId);
+    }
+
+    /**
+     * https://developer.amazon.com/en-US/docs/alexa/smapi/reference-based-catalog-management.html#delete-catalog
+     */
+    public function deleteCatalog()
+    {
+        return $this->delete('');
     }
 }

@@ -15,7 +15,8 @@ class EventsResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'publications' => PublicationsResource::collection($this->resource->publications),
+            'endpoint' => new EndpointResource($this->resource->endpoint),
         ];
     }
 }

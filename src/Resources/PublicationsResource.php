@@ -4,7 +4,7 @@ namespace Nanuc\Smapi\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PermissionResource extends JsonResource
+class PublicationsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,7 +15,7 @@ class PermissionResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'name' => $this->resource->name,
+            'eventName' => $this->resource->eventName
         ];
     }
 }

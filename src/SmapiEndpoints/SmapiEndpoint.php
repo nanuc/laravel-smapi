@@ -26,7 +26,7 @@ class SmapiEndpoint
         $this->provisioningInfo = $provisioningInfo;
     }
 
-    protected function get($endpoint = null)
+    public function get($endpoint = null)
     {
         return $this->runHttpMethod('get', $endpoint);
     }
