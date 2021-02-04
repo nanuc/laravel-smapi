@@ -11,6 +11,6 @@ class Credentials extends Skill
      */
     public function getCredentials()
     {
-        //
+        return $this->get('credentials');
     }
 }
