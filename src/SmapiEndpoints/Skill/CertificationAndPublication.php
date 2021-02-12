@@ -70,4 +70,12 @@ class CertificationAndPublication extends Skill
     {
         return $this->post('unpublish', compact('type', 'reason'));
     }
+
+    /**
+     * https://developer.amazon.com/en-US/docs/alexa/smapi/skill-certification-operations.html#get-a-list-of-all-skill-versions
+     */
+    public function listVersions()
+    {
+        return $this->get('versions');
+    }
 }
