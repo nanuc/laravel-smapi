@@ -28,6 +28,10 @@ class SmapiServiceProvider extends ServiceProvider
             'create_smapi_requests_table',
         ];
 
+        if(!File::exists(database_path('migrations'))) {
+            return;
+        }
+
         $publishedMigrations = collect(File::allFiles(database_path('migrations')))
             ->map(function($file){
                 return Str::replaceLast('.php', '', substr($file->getFilename(), 18));
