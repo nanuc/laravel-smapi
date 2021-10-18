@@ -8,6 +8,13 @@ class Slot extends Schema
     public $type;
     public $samples = [];
 
+    public function __construct($name = null, $type = null, $samples = [])
+    {
+        $this->name = $name;
+        $this->type = $type;
+        $this->samples = $samples;
+    }
+
     public function parse()
     {
         $this->name = $this->parseEntity('name');
