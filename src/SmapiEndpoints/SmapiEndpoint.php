@@ -21,6 +21,8 @@ class SmapiEndpoint
 
     protected $endpoint = '';
 
+    protected $nextToken;
+
     public function __construct($provisioningInfo = [])
     {
         $this->provisioningInfo = $provisioningInfo;

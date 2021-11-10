@@ -75,8 +75,9 @@ class Management extends Job
     /**
      * https://developer.amazon.com/en-US/docs/alexa/smapi/manage-update-jobs.html#list-execution-history
      */
-    public function listExecutionHistory()
+    public function listExecutionHistory($nextToken = null)
     {
+        $this->nextToken = $nextToken;
         return $this->get('executions');
     }
 

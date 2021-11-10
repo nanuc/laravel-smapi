@@ -48,8 +48,9 @@ class Management extends Catalog
     /**
      * https://developer.amazon.com/en-US/docs/alexa/smapi/reference-based-catalog-management.html#list-catalog-versions
      */
-    public function listCatalogVersions()
+    public function listCatalogVersions($nextToken = null)
     {
+        $this->nextToken = $nextToken;
         return $this->get('versions');
     }
 
