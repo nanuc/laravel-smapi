@@ -31,7 +31,7 @@ class Skill extends SmapiEndpoint
         return
             ($this->useSkillId ? 'skills/' . $this->skill->getSkillId() . '/' : '') .
             ($this->useStage ? 'stages/' . $this->skill->getStage() . '/' : '') .
-            (strlen($this->endpoint) ? $this->endpoint : '') .
+            ($this->endpoint && strlen($this->endpoint) ? $this->endpoint : '') .
             ($this->nextToken ? '?nextToken=' . $this->nextToken : '');
     }
 }

@@ -23,6 +23,6 @@ class ISP extends SmapiEndpoint
     {
         return 'inSkillProducts/' . $this->product->getProductId() .
             ($this->useStage ? '/stages/' . $this->product->getStage() : '') .
-            (strlen($this->endpoint) ? '/' . $this->endpoint : '');
+            ($this->endpoint && strlen($this->endpoint) ? '/' . $this->endpoint : '');
     }
 }

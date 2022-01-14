@@ -28,7 +28,7 @@ class Job extends SmapiEndpoint
     {
         return 'skills/api/custom/interactionModel/jobs/' .
             ($this->useJobId ? $this->getJob()->getJobId() : '') .
-            (strlen($this->endpoint) ? '/' . $this->endpoint : '') .
+            ($this->endpoint && strlen($this->endpoint) ? '/' . $this->endpoint : '') .
             ($this->nextToken ? '?nextToken=' . $this->nextToken : '');
     }
 }
