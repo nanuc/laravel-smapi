@@ -28,7 +28,7 @@ class Catalog extends SmapiEndpoint
     {
         return 'skills/api/custom/interactionModel/catalogs/' .
             ($this->useCatalogId ? $this->getCatalog()->getCatalogId() : '') .
-            (strlen($this->endpoint) ? '/' . $this->endpoint : '') .
+            ($this->endpoint && strlen($this->endpoint) ? '/' . $this->endpoint : '') .
             ($this->nextToken ? '?nextToken=' . $this->nextToken : '');
     }
 }
