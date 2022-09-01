@@ -8,7 +8,7 @@ class DialogIntentSlot extends Schema
     public $type = null;
     public $confirmationRequired;
     public $elicitationRequired;
-    public $prompts = [];
+    public $prompts = null;
 
     public function __construct($name = null)
     {
