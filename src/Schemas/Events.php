@@ -4,7 +4,7 @@ namespace Nanuc\Smapi\Schemas;
 
 class Events extends Schema
 {
-    public $publications = null;
+    public $publications = [];
     public $endpoint = null;
 
     public function parse()
